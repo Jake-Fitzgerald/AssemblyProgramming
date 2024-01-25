@@ -1,0 +1,45 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/01/2024 14:51:38
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : 
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11                              * .B = Bytes
+00001000                            12                              * .L = Long
+00001000                            13                              * .W = Wide (32bit)
+00001000                            14  
+00001000  7004                      15      MOVE.L #%100, D0        * Move register (%) 100 into address D0
+00001002  223C 00000100             16      MOVE.L #$100, D1        * Move constant literal 100 into address D1
+00001008  7464                      17      MOVE.L #100,  D2        * Move 100 (64) into address D2
+0000100A                            18      
+0000100A  21C0 3000                 19      MOVE.L D0,    $3000     * Move address value D0 to address registry
+0000100E  21C1 3010                 20      MOVE.L D1,    $3010     * Move address value D1 to address registry
+00001012  21C2 3020                 21      MOVE.L D2,    $3020     * Move address value D2 to address registry
+00001016                            22  
+00001016                            23                              * .W means it is using 32bit
+00001016  31FC 0064 3020            24      MOVE.W #100,  $3020     * Move 100 into address $3020
+0000101C  31FC 0100 3010            25      MOVE.W #$100, $3010     * Move value in address to address $3010 
+00001022  31FC 0004 3000            26      MOVE.W #%100, $3000     * Move register 100
+00001028                            27      
+00001028  FFFF FFFF                 28      SIMHALT             ; halt simulator
+0000102C                            29  
+0000102C                            30  * Put variables and constants here
+0000102C                            31  
+0000102C                            32      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
