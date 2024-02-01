@@ -1,0 +1,63 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 01/02/2024 14:16:30
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : Practical 1
+00000000                             3  * Written by : Jake Fitzgerald
+00000000                             4  * Date       : 01/02/2024
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  
+00001000                            12      * Question 1
+00001000  103C 0009                 13      MOVE.B #9, D0       ; Move byte literal 9 decimal to memory address D0.
+00001004                            14      ;MOVE.B D0, D1       ; Copy the data in memory address D0 to D1.
+00001004                            15      ;MOVE.B D1, $1100    ; Move data in D1 (9) to offset register at hex 1100.
+00001004                            16      ;MOVE.B $1100, D2    ; Move the data at $1100 (9) to memory address D2.
+00001004                            17      ;MOVE.B $1100, 100   ; Move the data at $1100 (9) to address 64 (decimal 100 is hex 64.)
+00001004                            18                          ; Address 60 + offset 4 = 64.
+00001004                            19      ;MOVE.L #$F9AC0234,$5000     ; Move long-word literal hex number to offset $5000.   
+00001004                            20      ;MOVE.L #$F9AC0234, 5000     ; Move the data to address 1388 (decimal 5000 is hex 1388).
+00001004                            21                                  ; Address 1380 + offset 08 = 1388.
+00001004                            22      ;MOVE.W #0234,$5100  ; Move word literal 0234 to address at $5100.
+00001004                            23                          ; Address $5100 stores 00 EA.
+00001004                            24      ;MOVE.B #%101,$5200  ; Move byte literal binary to address at $5200.
+00001004                            25                          ; We only move a byte so it's just 05 is stored at $5200.
+00001004                            26      
+00001004                            27      * Question 2
+00001004  45F8 2000                 28      LEA $2000, A2       ; (Load Effective Address) - Loads hex data 2000 into address register A2.
+00001008  24BC 3256FF01             29      MOVE.L #$3256FF01, (A2)     ; Move long-word literal hex into A2's pointer.
+0000100E                            30                                  ; Address $2000 has 32 56 FF 01.
+0000100E  2612                      31      MOVE.L (A2), D3     ; A2 now has a long hex value, we move that into memory register D3.
+00001010                            32                          ; We copied a long-word so D3 is 3256FF01.
+00001010  3812                      33      MOVE.W (A2), D4     ; Now we move only a word from A2's pointer into memory register D4.
+00001012                            34                          ; D4 now holds 00003256.
+00001012  1A12                      35      MOVE.B (A2), D5     ; Move only a byte from A2's pointer into memory register D5.
+00001014                            36                          ; D5 is now 00000032.
+00001014  21FC 00123456 6000        37      MOVE.L #$123456, 24576      ; Move long-word literal hex number to offset 6000.
+0000101C                            38                                  ; Address $6000 stores 00 12 34 56.
+0000101C  47F8 6000                 39      LEA 24576, A3       ; hex 6000 is moved into address register A3.
+00001020                            40                          ; A3 now holds 00006000.
+00001020                            41      ;ADD.L #$22, (A3)    ; Add source literal hex 22 to A3's pointer, then store result in A3's pointer.
+00001020                            42                          ; $ address 6000 (offset 3 so 6003) is now 00 12 34 78
+00001020                            43                          ; ---> used to be 00 12 34 56 (56 + 22 = 78). 
+00001020                            44    
+00001020                            45  
+00001020  FFFF FFFF                 46      SIMHALT             ; halt simulator
+00001024                            47  
+00001024                            48  * Put variables and constants here
+00001024                            49  
+00001024                            50      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
