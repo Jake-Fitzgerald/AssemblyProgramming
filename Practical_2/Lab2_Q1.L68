@@ -1,0 +1,47 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 08/02/2024 13:43:26
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11      
+00001000                            12     * Notes :
+00001000                            13     * Frame is constant name
+00001000                            14     
+00001000                            15     * Question 1
+00001000  343C 0018                 16     MOVE.W #FRAME3, D2   
+00001004                            17     *ADD.B #9,D2  
+00001004                            18   
+00001004                            19  * MUST BE NOT INDENTED
+00001004  =00000005                 20  FRAME EQU 5                                                                                               
+00001004  =00000006                 21  FRAME2 EQU FRAME+1         ; 5 + 1?                                                       
+00001004  =00000018                 22  FRAME3 EQU FRAME2*4         ; 6 
+00001004                            23  
+00001004                            24  
+00001004                            25      
+00001004                            26  
+00001004  FFFF FFFF                 27      SIMHALT             ; halt simulator
+00001008                            28  
+00001008                            29  * Put variables and constants here
+00001008                            30  
+00001008                            31      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+FRAME               5
+FRAME2              6
+FRAME3              18
+START               1000

@@ -1,0 +1,41 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 08/02/2024 14:08:00
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  * dc = define constant
+00001000                            12  
+00001000  1039 00001012             13      MOVE.B  X,D0        ; D0 stores 0000000A.  
+00001006  13C0 00001013             14      MOVE.B  D0,Y        ; Copy D0 value (10) into Y
+0000100C  1239 00001013             15      MOVE.B  Y, D1
+00001012                            16  
+00001012= 0A                        17  X   dc.b 10         ;  allocate one byte and initialise it to 10
+00001013                            18  Y   ds.b 1          ;  allocate one byte but do not initialise it 
+00001014                            19      
+00001014                            20  
+00001014                            21  
+00001014  FFFF FFFF                 22      SIMHALT             ; halt simulator
+00001018                            23  
+00001018                            24  * Put variables and constants here
+00001018                            25  
+00001018                            26      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+X                   1012
+Y                   1013

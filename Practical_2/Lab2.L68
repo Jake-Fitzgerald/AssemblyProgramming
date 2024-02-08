@@ -1,0 +1,43 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 08/02/2024 13:38:01
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11      
+00001000                            12     * Question 1
+00001000  343C 0018                 13     MOVE.W #FRAME3, D2   ; Frame is constant on a number
+00001004  0602 0009                 14     ADD.B #9,D2  
+00001008                            15   
+00001008  =00000005                 16  FRAME EQU 5                                                                                               
+00001008  =00000006                 17  FRAME2 EQU FRAME+1                                                                
+00001008  =00000018                 18  FRAME3 EQU FRAME2*4         
+00001008                            19  
+00001008                            20  
+00001008                            21      
+00001008                            22  
+00001008  FFFF FFFF                 23      SIMHALT             ; halt simulator
+0000100C                            24  
+0000100C                            25  * Put variables and constants here
+0000100C                            26  
+0000100C                            27      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+FRAME               5
+FRAME2              6
+FRAME3              18
+START               1000
