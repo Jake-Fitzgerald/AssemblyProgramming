@@ -1,0 +1,35 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 11/02/2024 17:54:13
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00000000                             7  
+00000000                             8  
+00001000                             9      ORG    $1000
+00001000                            10  START:
+00001000                            11  
+00001000  43F9 0000100E             12      LEA MESSAGE,A1      ; Print out the string 'Hello Assembly' in console window.
+00001006                            13      
+00001006  103C 000E                 14      MOVE.B #14,D0
+0000100A                            15      *TRAP #15
+0000100A                            16  
+0000100A  FFFF FFFF                 17      SIMHALT
+0000100E                            18      
+0000100E= 48 65 6C 6C 6F 20 ...     19  MESSAGE DC.B 'Hello Assembly',0
+0000101D                            20  
+0000101D                            21      END    START
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+MESSAGE             100E
+START               1000
