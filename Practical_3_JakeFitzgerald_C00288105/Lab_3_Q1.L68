@@ -1,0 +1,58 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 16/02/2024 15:07:59
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  *-----------------------------------------------------------
+00001000                            12  *Notes:
+00001000                            13  * GE = Name of a label - Kind of like a funcion we can call.
+00001000                            14  * cmp = compare
+00001000                            15  * cmp definition:
+00001000                            16  * The source operand is subtracted from the destination operand to get 
+00001000                            17  * the CCR conditions. The destination operand is not changed however.
+00001000                            18  * cmpi = compare immediate
+00001000                            19  
+00001000                            20  * Example:
+00001000                            21  *  cmpi.w    #$0F20,d0
+00001000                            22  * 0F21 – 0F20 = 0001
+00001000                            23  
+00001000                            24  * bge = jumps to that label.
+00001000                            25  *-----------------------------------------------------------
+00001000                            26  
+00001000  203C 00000492             27   move.l  #$00000492, d0     ; Put hex 492 into address D0.
+00001006  0C40 0020                 28      cmpi.w  #$0020,d0       ; Take hex 20 away from D0 (492).
+0000100A  6C00 0002                 29      bge GE                  ; Jumps to label GE.
+0000100E                            30                              ;  Acts like calling a function.
+0000100E                            31                              
+0000100E                            32     * move #$0000,d0          ; move by itself no byte, word or long.
+0000100E                            33                              ; 
+0000100E                            34  GE:
+0000100E  D640                      35      add d0,d3               ; Copy D0's value (492) into D3 address.
+00001010                            36                              ; D3 now stores hex 492.
+00001010                            37  
+00001010                            38  
+00001010                            39  
+00001010  FFFF FFFF                 40      SIMHALT             ; halt simulator
+00001014                            41  
+00001014                            42  * Put variables and constants here
+00001014                            43  
+00001014                            44      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+GE                  100E
+START               1000
