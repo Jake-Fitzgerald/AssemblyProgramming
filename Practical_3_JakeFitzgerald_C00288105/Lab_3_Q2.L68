@@ -1,0 +1,40 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/02/2024 18:11:11
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * cmpi = compare immediate
+00001000                            11  * Put program code here
+00001000                            12  
+00001000  7002                      13      move.l  #$00000002, d0  ; Puts hex number 2 into address D0.
+00001002  0C40 8001                 14      cmpi.w  #$8001,d0   ; dec -32767. Take 8001 away from 00000002 (#$-7999)
+00001006                            15                          ; Decimal of hex -7999 = -31129.
+00001006  6C00 0002                 16      bge GE
+0000100A                            17      *move #$0000,d0
+0000100A                            18  GE:
+0000100A  D640                      19      add d0,d3           ; Put D0 (00000002) into address D3.
+0000100C                            20  
+0000100C                            21  
+0000100C  FFFF FFFF                 22      SIMHALT             ; halt simulator
+00001010                            23  
+00001010                            24  * Put variables and constants here
+00001010                            25  
+00001010                            26      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+GE                  100A
+START               1000

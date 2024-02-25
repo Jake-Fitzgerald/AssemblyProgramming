@@ -1,0 +1,50 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/02/2024 18:32:42
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  *-----------------------------------------------------------
+00001000                            12  *Notes:
+00001000                            13  * BEQ = Branch on EQual
+00001000                            14  * If the Z flag of the CCR is set, the destination operand will be added to the PC,
+00001000                            15  * and the 68k will continue reading at the new offset held in PC.
+00001000                            16  * If the Z flag is clear, the instruction is ignored.
+00001000                            17  * Acts like an if statement, if the instruction above it is true,
+00001000                            18  * then it will go to the label and execute that instruction.
+00001000                            19  * If it's false then it will simple go to the next line below it.
+00001000                            20  
+00001000                            21  
+00001000                            22  
+00001000  203C 01AABB20             23      move.l  #$0001AABB20, d0    ; Put hex 1AABB20 (decimal 27966240) into address D0.
+00001006  B03C 0000                 24      cmp.b   #$00, d0            ; Compare bytes 00 to 20. (0 from 0 = 0).
+0000100A  6702                      25      beq.s   ValueIs20           ; Line above is true so ValueIs20 is called.                           
+0000100C  1200                      26      move.b  d0, d1              ; This line
+0000100E                            27   
+0000100E                            28  ValueIs20:
+0000100E  1400                      29      move.b  d0, d2              ; Copies last byte in D0 to D2.
+00001010                            30  
+00001010                            31  
+00001010  FFFF FFFF                 32      SIMHALT             ; halt simulator
+00001014                            33  
+00001014                            34  * Put variables and constants here
+00001014                            35  
+00001014                            36      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+VALUEIS20           100E

@@ -1,0 +1,53 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/02/2024 18:57:55
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  *-----------------------------------------------------------
+00001000                            12  *Notes:
+00001000                            13  * DIVU
+00001000                            14  * This instruction will divide the long-word of the destination operand
+00001000                            15  * by the word of the source operand.  The result is split into the quotient,
+00001000                            16  * and the remainder.  The remainder is saved in the upper word of the
+00001000                            17  * destination operand, while the quotient is saved in the lower word of
+00001000                            18  * the destination operand.
+00001000                            19  
+00001000                            20  * DIVS
+00001000                            21  * This is exactly the same as the DIVU instruction.
+00001000                            22  * Except the source and destination are both treated as “signed” instead
+00001000                            23  * of “unsigned”.  So this instruction can divide negative numbers
+00001000                            24  * as well as positive.
+00001000                            25  
+00001000  7009                      26      MOVE.L #$9, D0          ; Put literal hex 9 into address D0.
+00001002  80FC 0002                 27      DIVU.W    #$0002, D0    ; 9 / 2 = 4.5,
+00001006                            28                              ; In D0, the last byte is now 4 (quotient).
+00001006                            29                              ; the first byte of the word is now 1 (remainder).
+00001006                            30                              ; 0.5 rounded up to 1.
+00001006                            31   
+00001006  72F5                      32      MOVE.L #$FFFFFFF5, D1   ; Put literal hex FFFFFFF5 (decimal 4294967285) into address D0.
+00001008  83FC 0002                 33      DIVS.W    #$0002, D1  # check remainder and quotient.
+0000100C                            34  
+0000100C                            35  
+0000100C  FFFF FFFF                 36      SIMHALT             ; halt simulator
+00001010                            37  
+00001010                            38  * Put variables and constants here
+00001010                            39  
+00001010                            40      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000

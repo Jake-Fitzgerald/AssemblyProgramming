@@ -10,7 +10,7 @@ START:                  ; first instruction of program
 * Put program code here
 *-----------------------------------------------------------
 *Notes:
-* GE = Name of a label - Kind of like a funcion we can call.
+* GE = Name of a label - Kind of like a function we can call.
 * cmp = compare
 * cmp definition:
 * The source operand is subtracted from the destination operand to get 
@@ -44,6 +44,7 @@ GE:
 * Put variables and constants here
 
     END    START        ; last line of source
+
 
 *~Font name~Courier New~
 *~Font size~10~

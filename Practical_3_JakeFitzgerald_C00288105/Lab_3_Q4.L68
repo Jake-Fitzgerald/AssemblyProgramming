@@ -1,0 +1,46 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/02/2024 18:45:55
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  *-----------------------------------------------------------
+00001000                            12  *Notes:
+00001000                            13  * TST – TeST an operand
+00001000                            14  * The destination operand is compared with zero to get the CCR conditions.
+00001000                            15  * The destination operand remains unchanged.
+00001000                            16  * This is pretty much the same as cmpi.
+00001000                            17  
+00001000  203C FF940F21             18      move.l  #$FF940F21, d0  ; Put hex FF940F21 into address D0.
+00001006  4A40                      19      tst.w d0                ; Compare word 00 00 to 0F 21.
+00001008  6700 0004                 20      beq LabelEq             ; If above line comparisons are equal then
+0000100C                            21                              ; call LabelEq.
+0000100C  3200                      22      move d0, d1
+0000100E                            23  LabelEq:
+0000100E  3600                      24      move d0,d3              ; Copies all of D0 into D3.
+00001010                            25  
+00001010                            26  
+00001010                            27  
+00001010  FFFF FFFF                 28      SIMHALT             ; halt simulator
+00001014                            29  
+00001014                            30  * Put variables and constants here
+00001014                            31  
+00001014                            32      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+LABELEQ             100E
+START               1000
