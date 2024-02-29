@@ -1,0 +1,58 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 27/02/2024 09:37:43
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  *Notes
+00001000                            12  *-----------------------------------------------------------
+00001000                            13  * AND:
+00001000                            14  * This instruction will perform AND logical between the source operand and destination operand,
+00001000                            15  * the result is saved to the destination operand.
+00001000                            16  *-----------------------------------------------------------
+00001000                            17  
+00001000  11FC 0064 3000            18      MOVE.B #100, $3000      ; Put byte decimal 100 (hex 64) into address 3000.
+00001006                            19      
+00001006  143C 000C                 20      MOVE.B #12, D2          ; Put byte decimal 12 (hex c) into address D2.
+0000100A  163C 0016                 21      MOVE.B #22, D3          ; Put byte decimal 22 (hex 16) into address D3.
+0000100E                            22      
+0000100E  C602                      23      AND.B D2, D3            ; decimal 12 in binary = 1100.
+00001010                            24                              ; decimal 22 in binary = 10110.
+00001010                            25                              ; 1 AND 1 = 1.
+00001010                            26                              ; 1 AND 0 = 0.
+00001010                            27                              ; 0 AND 1 = 0.
+00001010                            28                              ; 0 AND 1 = 0. (WE DON'T DO THIS NEXT SINCE IT'S A BYTE)
+00001010                            29                              ; Answer = 100 (decimal 4).
+00001010                            30                              
+00001010                            31      
+00001010  43F8 3000                 32      LEA $3000, A1           ; Put address 3000 into A1. (hex 64 is stored)
+00001014                            33      
+00001014  0411 0014                 34      SUB.B #20, (A1)         ; Take deciaml 20 (hex 14) from A1's pointer. 
+00001018                            35                              ; 14 - 64 = 50. Hex 50 is now stored in 3000.
+00001018                            36   
+00001018  0611 000A                 37      ADD.B #10, (A1)         ; Add decimal 10 (hex A) from A1's pointer.
+0000101C                            38                              ; 10 + 50 = 60.
+0000101C                            39  
+0000101C                            40  
+0000101C  FFFF FFFF                 41      SIMHALT             ; halt simulator
+00001020                            42  
+00001020                            43  * Put variables and constants here
+00001020                            44  
+00001020                            45      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000

@@ -1,0 +1,43 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 26/02/2024 23:01:28
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000                            10  * Put program code here
+00001000                            11  
+00001000                            12  * EXT performs a signed extension, as the top bit of a value
+00001000                            13  * is essentially an indicator of whether it is positive or negative.
+00001000                            14  
+00001000                            15  
+00001000  203C FEDCBA14             16      MOVE.L #$FEDCBA14, D0   ; Put hex FEDCBA14 (4275878420) into D0.
+00001006                            17      
+00001006  4880                      18      EXT.W D0       ; 14 -> 0001 0100 ; msb positive (0), this is extended to 0000 0000 0001 0100
+00001008                            19                      ; FEDCBA14 -> FEDC0014
+00001008                            20               
+00001008  223C C1208489             21      MOVE.L #$C1208489, D1   ; Put hex C1208489 into D1.
+0000100E                            22      
+0000100E  48C1                      23      EXT.L D1 ;  8489 -> 1000 0100 1000 1001 ;
+00001010                            24  
+00001010                            25  
+00001010  FFFF FFFF                 26      SIMHALT             ; halt simulator
+00001014                            27  
+00001014                            28  * Put variables and constants here
+00001014                            29  
+00001014                            30      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
